@@ -6,12 +6,11 @@ public class Texto {
 
     private String texto;
     private Long quantidadePalavras;
-    private Integer tempoEstimadoLeitura;
     private String fraseAleatoria;
 
+    Integer tempoEstimadoLeitura;
     List<String> palavras = new ArrayList<>();
-    List<Texto> textos = new ArrayList<>();
-    Frase frase = new Frase();
+    List<String> frases = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -47,7 +46,7 @@ public class Texto {
     }
 
     public Integer getTempoEstimadoLeitura() {
-        Integer tempoEstimadoLeitura = Math.toIntExact(getQuantidadePalavras() / 60);
+        tempoEstimadoLeitura = Math.toIntExact(getQuantidadePalavras() / 60);
         return tempoEstimadoLeitura;
     }
 
@@ -56,14 +55,14 @@ public class Texto {
     }
 
     public List<String> getFrasesCom(String texto) {
-
-            List<String> frasesCom = new ArrayList<>();
-            List<String> frases = getFrases();
+            frases = getFrases();
+            List<String> frasesCom  = new ArrayList<>();
             for (int i = 0; i < frases.size(); i++) {
                 if (frases.get(i).contains(texto)) {
                     frasesCom.add(frases.get(i));
                 }
             }
+
             return frasesCom;
 
 
@@ -81,24 +80,19 @@ public class Texto {
         this.fraseAleatoria = fraseAleatoria;
     }
 
-    public void substitui(String palavraAntiga, String palavraNova){
-         texto.replace(palavraAntiga, palavraNova);
+    public Texto substitui(String palavraAntiga, String palavraNova){
+        return new Texto(this.texto.replace(palavraAntiga, palavraNova));
     }
 
     public Texto adicionaFrase(Frase frase){
-        Texto texto = new Texto(frase.getFrase());
-        textos.add(texto);
-        return texto;
+       return new Texto(this.texto.concat(frase.getFrase()));
     }
 
     public Texto adicionaFrase(String s){
-        Texto texto = new Texto(s);
-        textos.add(texto);
-        return texto;
+        return new Texto(this.texto.concat(s));
     }
 
     public List<String> getFrases() {
-        List<String> frasesString = List.of(getTexto().split("\\."));
-        return frasesString;
+        return List.of(this.texto.split("\\."));
     }
 }

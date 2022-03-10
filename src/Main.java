@@ -7,8 +7,8 @@ public class Main {
                 "plantar uma árvore, demonstramos preocupação com o ambiente onde vivemos. Ao ter um "+
                 "filho, amamos ao próximo incondicionalmente. Ao escrever um livro, desejamos "+
                 "compartilhar e \"eternizar\" o conhecimento adquirido.");
-                teste.substitui("popular", "do povo");
-        teste.adicionaFrase(new Frase("Claramente conseguimos realizar estes feitos abstratos de diferentes maneiras.")).adicionaFrase("O importante é ter consciência da importância destes.");
+                teste = teste.substitui("popular", "do povo");
+        teste = teste.adicionaFrase(new Frase("Claramente conseguimos realizar estes feitos abstratos de diferentes maneiras.")).adicionaFrase("O importante é ter consciência da importância destes.");
                 System.out.println("Qtd: " + teste.getQuantidadePalavras());
         System.out.println("Tempo: " + teste.getTempoEstimadoLeitura() + " minuto(s)");
                 System.out.println("Texto recuperado: " + teste);
